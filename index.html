@@ -1063,11 +1063,11 @@
         </p>
       </div>
       <div class="contact-info reveal">
-        <a href="/cdn-cgi/l/email-protection#deacb1b3bfb0acb7a8bbacbff0b7b0bd9eb9b3bfb7b2f0bdb1b3" class="contact-row">
+        <a id="email-link" href="#" class="contact-row">
           <span class="contact-row-icon">✉</span>
           <div>
             <span class="contact-row-label">Email</span>
-            <span class="contact-row-value"><span class="__cf_email__" data-cfemail="82f0edefe3ecf0ebf4e7f0e3acebece1c2e5efe3ebeeace1edef">[email&#160;protected]</span></span>
+            <span class="contact-row-value" id="email-display">Click to reveal</span>
           </div>
         </a>
         <a href="tel:4844794584" class="contact-row">
@@ -1142,6 +1142,18 @@
       setTimeout(() => el.classList.add('visible'), 200 + i * 200);
     });
   }, 100);
+  // Email obfuscation - assembles at runtime so bots can't scrape it
+  const u = 'romanrivera.inc';
+  const d = 'gmail.com';
+  const email = u + '@' + d;
+  const emailLink = document.getElementById('email-link');
+  const emailDisplay = document.getElementById('email-display');
+  emailLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    emailLink.href = 'mailto:' + email;
+    emailDisplay.textContent = email;
+    window.location.href = 'mailto:' + email;
+  });
 </script>
 </body>
 </html>
